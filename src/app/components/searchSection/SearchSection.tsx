@@ -1,7 +1,6 @@
 import React, {useCallback} from 'react';
 import style from './SearchSection.module.scss';
-import {useDispatch, useSelector} from "react-redux";
-import {searchValue} from "@/redux/filter/selector";
+import {useDispatch} from "react-redux";
 import {setSearchValue} from "@/redux/filter/slice";
 
 import { debounce } from "debounce";

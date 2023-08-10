@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {Book, BookSliceState, Status} from "@/redux/books/types";
+import {createSlice} from "@reduxjs/toolkit";
+import {BookSliceState, Status} from "@/redux/books/types";
 import {fetchBooksData} from "@/redux/books/asyncAction";
 
 const initialState: BookSliceState = {

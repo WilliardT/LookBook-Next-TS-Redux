@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import styles from './MainContent.module.scss';
 import Book from "@/app/components/books/Book";
 import {selectBooksData} from "@/redux/books/selector";
-import {useDispatch, useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import {fetchBooksData} from "@/redux/books/asyncAction";
 import Skeleton from "@/assets/skeleton";
 import {useAppDispatch} from "@/redux/store";
