@@ -11,12 +11,14 @@ export const fetchBooksData = createAsyncThunk<Book[], fetchBooksArgs>(
     'books/fetchBooksData', async (params: fetchBooksArgs, thunkAPI
     ) => {
     const { title, category } = params;
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}${category}&key=${key}`);
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?maxResults=30&q=${title}${category}&key=${key}`);
     const data = await response.json();
 
     if (data.length === 0) {
         return thunkAPI.rejectWithValue('Ошибка получения данных');
     }
 
-    return thunkAPI.fulfillWithValue(data.items)
+    console.log(data.totalItems)
+
+    return thunkAPI.fulfillWithValue(data)
 })

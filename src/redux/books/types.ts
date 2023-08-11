@@ -7,7 +7,8 @@ export type Book = {
     id: string
     volumeInfo: {
         title: string
-    }
+    },
+
 }
 
 export enum Status {

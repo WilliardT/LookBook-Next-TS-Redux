@@ -10,8 +10,8 @@ const Book = (book)=> {
                 <Image
                     className={styles.bookImage}
                     src={book.volumeInfo.imageLinks.smallThumbnail}
-                    width={140}
-                    height={205}
+                    width={130}
+                    height={190}
                     alt='namepic'
                 />
 
