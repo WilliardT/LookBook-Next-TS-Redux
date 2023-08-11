@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import style from './SearchSection.module.scss';
 import {useDispatch} from "react-redux";
 import {setCategory, setSearchValue} from "@/redux/filter/slice";

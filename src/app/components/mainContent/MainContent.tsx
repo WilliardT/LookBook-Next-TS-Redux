@@ -20,7 +20,6 @@ const MainContent: React.FC = () => {
 
     useEffect(() => {
 
-
         dispatch(fetchBooksData({
             title: searchValueData,
             category: categorySelect,
@@ -29,7 +28,6 @@ const MainContent: React.FC = () => {
         if (!searchValueData) {
             dispatch(setSearchValue('*'))
         }
-
 
     }, [searchValueData, categorySelect])
 
