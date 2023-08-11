@@ -11,6 +11,7 @@ import {setDataBooks} from "@/redux/books/slice";
 const SearchSection = () => {
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = React.useState<string>('');
+    const ref = React.useRef<HTMLInputElement>(null);
 
 
     const updateInputValue =  useCallback(
@@ -28,6 +29,7 @@ const SearchSection = () => {
         setInputValue('');
         dispatch(setSearchValue(''));
         dispatch(setDataBooks([]));
+        ref.current?.focus();
     }
 
 
@@ -40,6 +42,7 @@ const SearchSection = () => {
                     placeholder='введите название или автора'
                     onChange={onChangeValue}
                     value={inputValue}
+                    ref={ref}
                 />
                 {inputValue && (
                     <Image

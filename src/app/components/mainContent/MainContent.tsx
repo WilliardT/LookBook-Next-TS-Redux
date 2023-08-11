@@ -42,7 +42,9 @@ const MainContent: React.FC = () => {
             {
                 books.books?.length > 0 ? (
                     <p className={styles.mainText}>найдено: {books.books.length}</p>
-                ) : ''
+                ) : (
+                    <p className={styles.mainText}>чтобы найти книгу введите что-нибудь в строку поиска</p>
+                )
             }
             <div className={styles.mainBook}>
                 {
