@@ -4,13 +4,17 @@ import {fetchBooksData} from "@/redux/books/asyncAction";
 
 const initialState: BookSliceState = {
     books: [],
-    status: Status.LOADING,
+    status: Status.SUCCESS,
 }
 
 export const booksSlice = createSlice({
     name: 'books',
     initialState,
-    reducers: {},
+    reducers: {
+        setDataBooks: (state, action) => {
+            state.books = action.payload
+        }
+    },
     extraReducers:(builder) => {
         builder.addCase(fetchBooksData.pending, (state) => {
             state.status = Status.LOADING
@@ -25,6 +29,6 @@ export const booksSlice = createSlice({
     }
 })
 
-export const {} = booksSlice.actions
+export const {setDataBooks} = booksSlice.actions
 
 export default booksSlice.reducer

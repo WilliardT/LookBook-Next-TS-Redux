@@ -7,6 +7,8 @@ import {fetchBooksData} from "@/redux/books/asyncAction";
 import Skeleton from "@/assets/skeleton";
 import {useAppDispatch} from "@/redux/store";
 import {searchValue} from "@/redux/filter/selector";
+import {Status} from "@/redux/books/types";
+import {setDataBooks} from "@/redux/books/slice";
 
 const MainContent: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -22,7 +24,10 @@ const MainContent: React.FC = () => {
             dispatch(fetchBooksData({
                 title: params,
             }))
+        }
 
+        if (searchValueData.length === 0) {
+            dispatch(setDataBooks([]));
         }
 
     }, [searchValueData])
@@ -41,15 +46,18 @@ const MainContent: React.FC = () => {
             }
             <div className={styles.mainBook}>
                 {
+                    books.status === Status.LOADING ? (
+                        [...Array(3)].map((_, index) => {
+                            return <Skeleton key={index} />
+                        })
+                    ) : ''
+                }
+                {
                     books.books?.length > 0 ? (
                         books.books.slice(0, displayCount).map((book: any) => {
                             return <Book key={book.id} {...book}/>
                         })
-                    ) : (
-                        [...Array(3)].map((_, index) => {
-                                  return <Skeleton key={index} />
-                        })
-                    )
+                    ) : ''
                 }
             </div>
             {

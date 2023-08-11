@@ -6,9 +6,18 @@
     gap: 15px;
     background: #1B3764;
 
+    &InputWrapper {
+        position: relative;
+        width: 50%;
+
+        @media (max-width: 768px) {
+            width: 100%;
+        }
+
+    }
 
     &Input {
-        width: 50%;
+        width: 100%;
         padding: 5px;
         border:2px solid #FFCA42;
 
@@ -18,8 +27,23 @@
         font-weight: 400;
         line-height: 28.5px; /* 158.333% */
 
+
         @media (max-width: 768px) {
             width: 100%;
+        }
+    }
+
+    &InputClean {
+        position: absolute;
+        cursor: pointer;
+        opacity: 0.5;
+        width: 25px;
+        height: 25px;
+        left: 94%;
+        top: 20%;
+
+        @media (max-width: 768px) {
+            left: 90%;
         }
     }
 
