@@ -1,5 +1,6 @@
 export type fetchBooksArgs = {
     title: string
+    category: string
 }
 
 export type Book = {

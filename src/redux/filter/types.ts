@@ -18,12 +18,17 @@ export enum SortoOderBy {
     NEWEST = 'newest',
 }
 
-export enum SortPrintType {
-    ALL = 'all',
-    BOOKS = 'books',
-    MAGAZINES = 'magazines',
+export enum SortCategory {
+    ALL = '',
+    ARTS = 'art',
+    BIOGRAPHY = 'biography',
+    COMPUTERS = 'computers',
+    HISTORY = 'history',
+    MEDICAL = 'medical',
+    POETRY = 'poetry',
 }
 
 export interface FilterSliceState {
     searchValue: string
+    category: string
 }

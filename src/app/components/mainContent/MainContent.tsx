@@ -6,31 +6,32 @@ import { useSelector} from "react-redux";
 import {fetchBooksData} from "@/redux/books/asyncAction";
 import Skeleton from "@/assets/skeleton";
 import {useAppDispatch} from "@/redux/store";
-import {searchValue} from "@/redux/filter/selector";
+import {category, searchValue} from "@/redux/filter/selector";
 import {Status} from "@/redux/books/types";
-import {setDataBooks} from "@/redux/books/slice";
+import {setSearchValue} from "@/redux/filter/slice";
 
 const MainContent: React.FC = () => {
     const dispatch = useAppDispatch();
     const books = useSelector(selectBooksData);
     const searchValueData = useSelector(searchValue);
+    const categorySelect = useSelector(category)
 
     const [displayCount, setDisplayCount] = React.useState(30);
 
     useEffect(() => {
-        const params = searchValueData
 
-        if (params.length > 0) {
-            dispatch(fetchBooksData({
-                title: params,
-            }))
+
+        dispatch(fetchBooksData({
+            title: searchValueData,
+            category: categorySelect,
+        }))
+
+        if (!searchValueData) {
+            dispatch(setSearchValue('*'))
         }
 
-        if (searchValueData.length === 0) {
-            dispatch(setDataBooks([]));
-        }
 
-    }, [searchValueData])
+    }, [searchValueData, categorySelect])
 
     const handleClickShowMore = () => {
         setDisplayCount(displayCount + 30);
