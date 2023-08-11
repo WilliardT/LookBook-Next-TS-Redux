@@ -62,7 +62,11 @@ const MainContent: React.FC = () => {
             </div>
             {
                 books.books?.length > displayCount && (
-                    <button>Показать больше</button>
+                    <button
+                        onClick={handleClickShowMore}
+                    >
+                        Показать больше
+                    </button>
                 )
             }
         </section>
