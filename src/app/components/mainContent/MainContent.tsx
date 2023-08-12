@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import styles from './MainContent.module.scss';
 import Book from "@/app/components/books/Book";
-import {countBooks, countFetch, selectBooksData} from "@/redux/books/selector";
+import {countBooks, countFetch, loadingStatus, selectBooksData} from "@/redux/books/selector";
 import {useSelector} from "react-redux";
 import {fetchBooksData} from "@/redux/books/asyncAction";
 import Skeleton from "@/assets/skeleton";
@@ -18,7 +18,8 @@ const MainContent: React.FC = () => {
     const categorySelect = useSelector(category)
     const countFindBooks = useSelector(countBooks);
     const countFetchPage = useSelector(countFetch)
-
+    const loading = useSelector(loadingStatus)
+    console.log(loading)
 
     useEffect(() => {
 
@@ -58,11 +59,11 @@ const MainContent: React.FC = () => {
             }
             <div className={styles.mainBook}>
                 {
-                    books?.status === Status.LOADING ? (
-                        [...Array(3)].map((_, index) => {
+                    loading === Status.LOADING && (
+                        [...Array(4)].map((_, index) => {
                             return <Skeleton key={index}/>
                         })
-                    ) : ''
+                    )
                 }
                 {
                     books?.length > 0 ? (

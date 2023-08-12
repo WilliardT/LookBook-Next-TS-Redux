@@ -20,7 +20,5 @@ export const fetchBooksData = createAsyncThunk<Book[], fetchBooksArgs>(
         return thunkAPI.rejectWithValue('Ошибка получения данных');
     }
 
-    console.log(data.totalItems)
-
     return thunkAPI.fulfillWithValue(data)
 })
