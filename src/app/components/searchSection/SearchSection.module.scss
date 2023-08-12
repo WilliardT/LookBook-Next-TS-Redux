@@ -20,6 +20,7 @@
         width: 100%;
         padding: 5px;
         border:2px solid #FFCA42;
+        border-radius: 5px;
 
         font-family: Inter;
         font-size: 18px;
@@ -49,34 +50,45 @@
 
     &SelectCategory {
         width: 200px;
+        padding: 5px;
+        border-radius: 5px;
 
-        color: #B4C7E7;
+        color: #969AA0;
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
         line-height: 28.5px; /* 158.333% */
 
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        appearance: none;
-        outline: 0;
+        //-webkit-appearance: none;
+        //-moz-appearance: none;
+        //-ms-appearance: none;
+        //appearance: none;
+        //outline: 0;
     }
 
     &SelectOption {
-        color: #B4C7E7;
+        color: #969AA0;
+        padding: 5px;
     }
 
     &SelectSort {
         width: 200px;
+        padding: 5px;
+        border-radius: 5px;
 
-        color: #B4C7E7;
+        color: #969AA0;
         font-family: Inter;
         font-size: 18px;
         font-style: normal;
         font-weight: 400;
         line-height: 28.5px; /* 158.333% */
+
+        //-webkit-appearance: none;
+        //-moz-appearance: none;
+        //-ms-appearance: none;
+        //appearance: none;
+        //outline: 0;
     }
 
     &SelectWrapper {

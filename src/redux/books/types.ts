@@ -1,6 +1,7 @@
 export type fetchBooksArgs = {
     title: string
     category: string
+    countFetch: string
 }
 
 export type Book = {
@@ -18,6 +19,7 @@ export enum Status {
 }
 
 export interface BookSliceState {
-    books: Book[]
-    status: Status
+    books: Book[],
+    status: Status,
+    countFetch: number,
 }
