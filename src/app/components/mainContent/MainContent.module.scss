@@ -17,6 +17,15 @@
         }
     }
 
+    &BookSkeleton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+
     &Book {
         display: grid;
         grid-template-columns: repeat(4, 1fr);

@@ -25,7 +25,6 @@ export enum Status {
 export interface BookSliceState {
     books: {
         items: Book[],
-        totalItems: number
     },
     status: Status,
     countFetch: number,

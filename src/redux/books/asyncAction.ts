@@ -2,7 +2,6 @@
 //  TODO: убрать ключ в переменные окружения
 const key = 'AIzaSyCYnWJXYX7bcgvm8LuQobk4PZKbzcywqgQ'
 
-//?subject:medical  --- к категории
 
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {Book, fetchBooksArgs} from "@/redux/books/types";
