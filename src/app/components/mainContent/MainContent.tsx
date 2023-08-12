@@ -19,7 +19,6 @@ const MainContent: React.FC = () => {
     const countFindBooks = useSelector(countBooks);
     const countFetchPage = useSelector(countFetch)
     const loading = useSelector(loadingStatus)
-    console.log(loading)
 
     useEffect(() => {
 
