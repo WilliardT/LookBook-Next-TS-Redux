@@ -21,10 +21,9 @@ const MainContent: React.FC = () => {
     const countFetchPage = useSelector(countFetch)
     const loading = useSelector(loadingStatus)
 
-    //  //?subject:medical  --- к категории
 
     useEffect(() => {
-        let selectCategoryStriing = '';
+        let selectCategoryStriing ;
 
         if (categorySelect === SortCategory.ALL) {
             selectCategoryStriing = ''
@@ -71,11 +70,10 @@ const MainContent: React.FC = () => {
                     loading === Status.LOADING && (
                         [...Array(4)].map((_, index) => {
                             return (
-                                <div
-                                    className={styles.mainBookSkeleton}
-                                    key={index}>
-                                    <Skeleton />
-                                </div>
+                                <Skeleton
+                                    className={styles.bookSkeleton}
+                                    key={index}
+                                />
                             )
                         })
                     )
