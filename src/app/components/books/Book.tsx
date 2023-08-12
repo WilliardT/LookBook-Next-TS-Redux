@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './Book.module.scss'
 import Image from "next/image";
+import {Book} from "@/redux/books/types";
 
-const Book = (book)=> {
+const Book: React.FC<Book> = (book) => {
 
     return (
         <div className={styles.book}>
-            {book.volumeInfo.imageLinks?.smallThumbnail ? (
+            {book.volumeInfo.imageLinks?.thumbnail ? (
                 <Image
                     className={styles.bookImage}
                     src={book.volumeInfo.imageLinks.thumbnail}
