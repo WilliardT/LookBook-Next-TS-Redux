@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {BookSliceState, Status} from "@/redux/books/types";
 import {fetchBooksData} from "@/redux/books/asyncAction";
-import Book from "@/app/components/books/Book";
+
 
 const initialState: BookSliceState = {
     books: {

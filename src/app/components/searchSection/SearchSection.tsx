@@ -20,7 +20,7 @@ const SearchSection: React.FC<SearchSectionProps> = () => {
     const updateInputValue =  useCallback(
         debounce((string: string) => {
             dispatch(setSearchValue(string));
-        }, 500), []
+        }, 500), [dispatch, debounce]
     )
 
     const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {

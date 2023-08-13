@@ -21,8 +21,6 @@ const MainContent: React.FC = () => {
     const countFetchPage = useSelector(countFetch)
     const loading = useSelector(loadingStatus)
 
-    console.log('books', books);
-
 
     useEffect(() => {
         let selectCategoryStriing ;
@@ -47,12 +45,12 @@ const MainContent: React.FC = () => {
             dispatch(setSearchValue('*'))
         }
 
-    }, [searchValueData, categorySelect, countFetchPage])
+    }, [dispatch, searchValueData, categorySelect, countFetchPage])
 
 
     useEffect(() => {
         dispatch(setCountFetch(0));
-    },[categorySelect, searchValueData])
+    },[dispatch, categorySelect, searchValueData])
 
 
     const handleClickShowMore = () => {
