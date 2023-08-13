@@ -2,6 +2,7 @@ export type fetchBooksArgs = {
     title: string
     category: string
     countFetch: string
+    sortOrder: string
 }
 
 export type Book = {

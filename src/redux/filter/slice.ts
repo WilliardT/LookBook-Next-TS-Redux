@@ -1,9 +1,10 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {FilterSliceState, SortCategory} from "@/redux/filter/types";
+import {FilterSliceState, Sort0rOderBy, SortCategory} from "@/redux/filter/types";
 
 const initialState: FilterSliceState = {
     searchValue: '*',
     category: SortCategory.ALL,
+    sortOrder: Sort0rOderBy.RELEVANCE,
 }
 
 export const filterSlice = createSlice({
@@ -15,10 +16,13 @@ export const filterSlice = createSlice({
         },
         setCategory: (state, action: PayloadAction<SortCategory>) => {
             state.category = action.payload
+        },
+        setSortOrder: (state, action: PayloadAction<Sort0rOderBy>) => {
+            state.sortOrder = action.payload
         }
     }
 })
 
-export const {setSearchValue, setCategory} = filterSlice.actions
+export const {setSearchValue, setCategory, setSortOrder} = filterSlice.actions
 
 export default filterSlice.reducer

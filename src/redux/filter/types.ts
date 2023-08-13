@@ -13,7 +13,7 @@ books — возвращает только результаты, являющи
 magazines — возвращает результаты, которые являются журналами.
  */
 
-export enum SortoOderBy {
+export enum Sort0rOderBy {
     RELEVANCE = 'relevance',
     NEWEST = 'newest',
 }
@@ -31,4 +31,5 @@ export enum SortCategory {
 export interface FilterSliceState {
     searchValue: string
     category: string
+    sortOrder: string
 }

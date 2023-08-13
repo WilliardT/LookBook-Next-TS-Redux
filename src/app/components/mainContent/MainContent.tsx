@@ -6,7 +6,7 @@ import {useSelector} from "react-redux";
 import {fetchBooksData} from "@/redux/books/asyncAction";
 import Skeleton from "@/assets/skeleton";
 import {useAppDispatch} from "@/redux/store";
-import {category, searchValue} from "@/redux/filter/selector";
+import {category, searchValue, sortOrder} from "@/redux/filter/selector";
 import {Status} from "@/redux/books/types";
 import {setSearchValue} from "@/redux/filter/slice";
 import {setCountFetch} from "@/redux/books/slice";
@@ -20,6 +20,7 @@ const MainContent: React.FC = () => {
     const countFindBooks = useSelector((state: any) => state.books.books.totalItems);
     const countFetchPage = useSelector(countFetch)
     const loading = useSelector(loadingStatus)
+    const order = useSelector(sortOrder)
 
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const MainContent: React.FC = () => {
         const params = {
             title: searchValueData,
             category: selectCategoryStriing,
+            sortOrder: order,
         }
 
         dispatch(fetchBooksData({
@@ -45,7 +47,7 @@ const MainContent: React.FC = () => {
             dispatch(setSearchValue('*'))
         }
 
-    }, [dispatch, searchValueData, categorySelect, countFetchPage])
+    }, [dispatch, searchValueData, categorySelect, countFetchPage, order])
 
 
     useEffect(() => {

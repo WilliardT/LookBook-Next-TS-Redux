@@ -9,9 +9,9 @@ import {Book, fetchBooksArgs} from "@/redux/books/types";
 export const fetchBooksData = createAsyncThunk<Book[], fetchBooksArgs>(
     'books/fetchBooksData', async (params: fetchBooksArgs, thunkAPI
     ) => {
-    const { title, category, countFetch } = params;
+    const { title, category, countFetch, sortOrder } = params;
     const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?startIndex=${countFetch}&maxResults=30&q=${title}${category}&key=${key}`
+        `https://www.googleapis.com/books/v1/volumes?startIndex=${countFetch}&maxResults=30&q=${title}${category}&orderBy=${sortOrder}&key=${key}`
     );
     const data = await response.json();
 

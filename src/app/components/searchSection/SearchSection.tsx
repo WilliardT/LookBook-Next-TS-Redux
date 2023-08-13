@@ -1,12 +1,12 @@
 import React, {useCallback} from 'react';
 import style from './SearchSection.module.scss';
 import {useDispatch} from "react-redux";
-import {setCategory, setSearchValue} from "@/redux/filter/slice";
+import {setCategory, setSearchValue, setSortOrder} from "@/redux/filter/slice";
 import { debounce } from "debounce";
 import Image from "next/image";
 import clearIcon from "@/assets/clearIcon.svg";
 import {setDataBooks} from "@/redux/books/slice";
-import {SortCategory} from "@/redux/filter/types";
+import {Sort0rOderBy, SortCategory} from "@/redux/filter/types";
 
 type SearchSectionProps = {}
 
@@ -50,6 +50,15 @@ const SearchSection: React.FC<SearchSectionProps> = () => {
         dispatch(setCategory(option));
     }
 
+    const selectOrder: {name: string, value: Sort0rOderBy}[] = [
+        {name: 'релевантные', value: Sort0rOderBy.RELEVANCE},
+        {name: 'сначала новые', value: Sort0rOderBy.NEWEST},
+    ]
+
+    const onHandleChangeSortOrder = (option: Sort0rOderBy) => {
+        dispatch(setSortOrder(option));
+    }
+
 
     return (
         <div className={style.searchSection}>
@@ -89,8 +98,23 @@ const SearchSection: React.FC<SearchSectionProps> = () => {
                         })
                     }
                 </select>
-                <select className={style.searchSectionSelectSort}>
-                    <option>sort</option>
+                <select
+                    className={style.searchSectionSelectSort}
+                    onChange={(e) => onHandleChangeSortOrder(e.target.value as Sort0rOderBy)}
+                >
+                    {
+                        selectOrder.map((option, index) => {
+                            return (
+                                <option
+                                    className={style.searchSectionSelectOption}
+                                    key={index}
+                                    value={option.value}
+                                >
+                                    {option.name}
+                                </option>
+                            )
+                        })
+                    }
                 </select>
             </div>
 
