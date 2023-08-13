@@ -17,9 +17,11 @@ const MainContent: React.FC = () => {
     const books = useSelector(selectBooksData);
     const searchValueData = useSelector(searchValue);
     const categorySelect = useSelector(category)
-    const countFindBooks = useSelector((state: any) => state.books.countBooks);
+    const countFindBooks = useSelector((state: any) => state.books.books.totalItems);
     const countFetchPage = useSelector(countFetch)
     const loading = useSelector(loadingStatus)
+
+    console.log('books', books);
 
 
     useEffect(() => {
@@ -61,7 +63,7 @@ const MainContent: React.FC = () => {
     return (
         <section className={styles.main}>
             {
-                books?.length > 0 ? (
+                books?.items?.length > 0 ? (
                     <p className={styles.mainText}>найдено: {countFindBooks} </p>
                 ) : ''
             }
@@ -79,15 +81,15 @@ const MainContent: React.FC = () => {
                     )
                 }
                 {
-                    books?.length > 0 ? (
-                        books.map((book: any) => {
+                    books?.items?.length > 0 ? (
+                        books.items.map((book: any) => {
                             return <Book key={book.id} {...book}/>
                         })
                     ) : ''
                 }
             </div>
             {
-                books?.length >= 30 && (
+                books?.items?.length >= 30 && (
                     <button
                         onClick={handleClickShowMore}
                     >

@@ -1,9 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {BookSliceState, Status} from "@/redux/books/types";
 import {fetchBooksData} from "@/redux/books/asyncAction";
+import Book from "@/app/components/books/Book";
 
 const initialState: BookSliceState = {
-    books: [],
+    books: {
+        items: [],
+    },
     status: Status.SUCCESS,
     countFetch: 0,
 }
@@ -24,7 +27,7 @@ export const booksSlice = createSlice({
             state.status = Status.LOADING
         })
         builder.addCase(fetchBooksData.fulfilled, (state, action) => {
-            state.books = action.payload
+            state.books.items = action.payload
             state.status = Status.SUCCESS
         })
         builder.addCase(fetchBooksData.rejected, (state) => {

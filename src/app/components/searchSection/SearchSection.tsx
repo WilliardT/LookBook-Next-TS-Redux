@@ -8,14 +8,10 @@ import clearIcon from "@/assets/clearIcon.svg";
 import {setDataBooks} from "@/redux/books/slice";
 import {SortCategory} from "@/redux/filter/types";
 
-
-// type SearchProps = {
-//     valueSearchProps: string
-//     onChangeValueSearch: (value: string) => void
-// }
+type SearchSectionProps = {}
 
 
-const SearchSection = () => {
+const SearchSection: React.FC<SearchSectionProps> = () => {
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = React.useState<string>('');
     const ref = React.useRef<HTMLInputElement>(null);
@@ -40,7 +36,7 @@ const SearchSection = () => {
     }
 
 
-    const categoriesOptions = [
+    const categoriesOptions: {name: string, value: SortCategory}[] = [
         {name: 'все категории', value: SortCategory.ALL},
         {name: 'искусство', value: SortCategory.ARTS},
         {name: 'биография', value: SortCategory.BIOGRAPHY},
@@ -50,7 +46,7 @@ const SearchSection = () => {
         {name: 'поэзия', value: SortCategory.POETRY},
     ]
 
-    const onHandleChangeCategory = (option) => {
+    const onHandleChangeCategory = (option: SortCategory) => {
         dispatch(setCategory(option));
     }
 
@@ -77,7 +73,7 @@ const SearchSection = () => {
             <div className={style.searchSectionSelectWrapper}>
                 <select
                     className={style.searchSectionSelectCategory}
-                    onChange={(e) => onHandleChangeCategory(e.target.value)}
+                    onChange={(e) => onHandleChangeCategory(e.target.value as SortCategory)}
                 >
                     {
                         categoriesOptions.map((option, index) => {
