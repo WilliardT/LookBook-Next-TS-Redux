@@ -22,7 +22,6 @@ const MainContent: React.FC = () => {
     const loading = useSelector(loadingStatus)
     const order = useSelector(sortOrder)
 
-    console.log('countFindBooks', countFindBooks)
 
     useEffect(() => {
         let selectCategoryStriing ;
