@@ -1,6 +1,6 @@
 import {RootState} from "@/redux/store";
 
-export const selectBooksData = ((state: RootState) => state.books.books.items)
+export const selectBooksData = ((state: RootState) => state.books.items?.items || [])
 
 export const  countFetch = ((state: RootState) => state.books.countFetch)
 

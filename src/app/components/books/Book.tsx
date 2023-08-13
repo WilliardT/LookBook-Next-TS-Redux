@@ -3,17 +3,17 @@ import styles from './Book.module.scss'
 import Image from "next/image";
 import {Book} from "@/redux/books/types";
 
-const Book: React.FC<Book> = (book) => {
+const Book: React.FC<Book> = ({imageLink, title, authors}) => {
 
     return (
         <div className={styles.book}>
-            {book.volumeInfo.imageLinks?.thumbnail ? (
+            {imageLink ? (
                 <Image
                     className={styles.bookImage}
-                    src={book.volumeInfo.imageLinks.thumbnail}
+                    src={imageLink}
                     width={110}
                     height={170}
-                    alt='namepic'
+                    alt={title}
                 />
 
             ) : (
@@ -21,8 +21,8 @@ const Book: React.FC<Book> = (book) => {
                     <p className={styles.bookNotImageText}>нет обложки</p>
                 </div>
             )}
-            <h4 className={styles.bookTitle}>{book.volumeInfo.title}</h4>
-            <p className={styles.bookAuthor}>{book.volumeInfo.authors}</p>
+            <h4 className={styles.bookTitle}>{title}</h4>
+            <p className={styles.bookAuthor}>{authors}</p>
         </div>
     );
 };

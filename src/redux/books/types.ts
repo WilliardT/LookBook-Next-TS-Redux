@@ -6,16 +6,10 @@ export type fetchBooksArgs = {
 }
 
 export type Book = {
-
     id: string
-    volumeInfo: {
-        title: string,
-        authors: string[],
-        imageLinks: {
-            thumbnail: string
-        }
-    }
-
+    title: string,
+    authors: string[],
+    imageLink: any,
 }
 
 export enum Status {
@@ -25,9 +19,7 @@ export enum Status {
 }
 
 export interface BookSliceState {
-    books: {
-        items: Book[],
-    },
+    items: any,
     status: Status,
     countFetch: number,
 }

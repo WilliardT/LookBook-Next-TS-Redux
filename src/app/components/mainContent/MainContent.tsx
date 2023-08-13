@@ -17,11 +17,12 @@ const MainContent: React.FC = () => {
     const books = useSelector(selectBooksData);
     const searchValueData = useSelector(searchValue);
     const categorySelect = useSelector(category)
-    const countFindBooks = useSelector((state: any) => state.books.books.totalItems);
+    const countFindBooks = useSelector((state: any) => state.books.items.totalItems);
     const countFetchPage = useSelector(countFetch)
     const loading = useSelector(loadingStatus)
     const order = useSelector(sortOrder)
 
+    console.log('countFindBooks', countFindBooks)
 
     useEffect(() => {
         let selectCategoryStriing ;
@@ -63,7 +64,7 @@ const MainContent: React.FC = () => {
     return (
         <section className={styles.main}>
             {
-                books?.items?.length > 0 ? (
+                books?.length > 0 ? (
                     <p className={styles.mainText}>найдено: {countFindBooks} </p>
                 ) : ''
             }
@@ -81,15 +82,21 @@ const MainContent: React.FC = () => {
                     )
                 }
                 {
-                    books?.items?.length > 0 ? (
-                        books.items.map((book: any) => {
-                            return <Book key={book.id} {...book}/>
-                        })
-                    ) : ''
+                    books?.map((book: any) => {
+                        return (
+                            <Book
+                                key={book.id}
+                                id={book.id}
+                                title={book.volumeInfo?.title}
+                                authors={book.volumeInfo?.authors}
+                                imageLink={book.volumeInfo?.imageLinks?.thumbnail}
+                            />
+                        )
+                    })
                 }
             </div>
             {
-                books?.items?.length >= 30 && (
+                books?.length >= 30 && (
                     <button
                         onClick={handleClickShowMore}
                     >
